@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>D-day_V0.1</title>
+<link rel="stylesheet" href="/css/common.css">
+</head>
+<body>
+	<header>
+		<h1>계산기</h1>
+		<button id="menu-btn" onclick="toggleMenu()">메뉴</button>
+		<nav id="menu-list">
+			<ul>
+				<li><a href="#">메뉴1</a></li>
+				<li><a href="#">메뉴2</a></li>
+				<li><a href="#">메뉴3</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<nav>
+		광고1
+	</nav>
+
+	<section>
+		<h2>D-Day 계산하기</h2>
+		<p id="current-time"></p>
+		<label for="inputDate">D-Day 입력 :</label> <input type="date" id="inputDate">
+		<button type="button" onclick="calculate()">계산</button>
+		<div id="result"></div>
+	</section>
+
+	<nav>
+		광고2
+	</nav>
+
+	<footer>
+		<p>&copy; 2023 D-day Calculator</p>
+	</footer>
+	<script>
+		window.onload = function() {
+			displayDate();
+		};
+
+		function displayDate() {
+			let date = new Date();
+			let year = date.getFullYear();
+			let month = date.getMonth() + 1;
+			let day = date.getDate();
+			let hours = date.getHours();
+			let minutes = date.getMinutes();
+			let seconds = date.getSeconds();
+
+			document.getElementById("current-time").innerHTML = "현재시간 : "
+					+ year + "년 " + month + "월 " + day + "일 " + hours + "시 "
+					+ minutes + "분 " + seconds + "초";
+		}
+
+		setInterval(displayDate, 1000);
+
+		function calculate() {
+			const inputDate = new Date(
+					document.getElementById("inputDate").value);
+
+			if (isNaN(inputDate.getTime())) {
+				alert("계산할 날짜를 입력해주세요.");
+				return false;
+			}
+
+			const now = new Date();
+			const diff = inputDate.valueOf() - now.valueOf();
+			let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+			let hours = Math.floor((diff % (1000 * 60 * 60 * 24))
+					/ (1000 * 60 * 60));
+			let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+			let seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+			let message = "";
+
+			if (days < -1) {
+				message = `D-Day 로 부터 ${-days - 1}일 ${-hours}시간 ${-minutes}분 ${-seconds}초 지났습니다.`;
+			} else if (days > -1) {
+				message = `D-Day 로 부터 ${days}일 ${hours}시간 ${minutes}분 ${seconds}초 남았습니다.`;
+			} else {
+				message = "D-Day 입니다.!!";
+			}
+
+			document.getElementById("result").innerHTML = message;
+		}
+
+		function toggleMenu() {
+			var menu = document.getElementById("menu-list");
+			if (menu.style.display === "block") {
+				menu.style.display = "none";
+			} else {
+				menu.style.display = "block";
+			}
+		}
+	</script>
+</body>
+</html>
