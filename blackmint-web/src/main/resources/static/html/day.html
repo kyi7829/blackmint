@@ -2,105 +2,41 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>D-day_V0.1</title>
+<title>D-day</title>
 <link rel="stylesheet" href="../css/common.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha384-hQIljkOBcg8YkYvJpGRi9O+Z6D5F5yniAaS5w5z5M6k5U6vFV4P4U6X2UWqbA8Il" crossorigin="anonymous">
+<script type="text/javascript" src="../javaScript/common.js"></script>
+<script type="text/javascript" src="../javaScript/dDay.js"></script>
 </head>
 <body>
 	<header>
-		<h1>D-Day 계산기</h1>
-		<button class ="fa-solid fa-bars" id="menu-btn" onclick="toggleMenu()"></button>
+		<h1>
+			<a href="https://www.blackmint.co.kr/" id="home">BlackMint</a>
+		</h1>
+		<button class="fa-solid fa-bars" id="menu-btn" onclick="toggleMenu()"></button>
 		<nav id="menu-list">
 			<ul>
-				<li><a href="#">메뉴1</a></li>
+				<li><a href="html/day.html">D-Day 계산기</a></li>
 				<li><a href="#">메뉴2</a></li>
 				<li><a href="#">메뉴3</a></li>
 			</ul>
 		</nav>
 	</header>
 
-	<nav id="left-bar">
-		광고주세용 ^.^
-	</nav>
+	<nav id="left-bar">광고주세용 ^.^</nav>
 
 	<section>
 		<h2>D-Day 계산하기</h2>
 		<p id="current-time"></p>
-		<label for="inputDate">D-Day 입력 :</label> <input type="date" id="inputDate">
+		<label for="inputDate">D-Day 입력 :</label> <input type="date"
+			id="inputDate">
 		<button type="button" onclick="calculate()">계산</button>
 		<div id="result"></div>
 	</section>
 
-	<nav id="right-bar" >
-		광고주세용 ^.^
-	</nav>
+	<nav id="right-bar">광고주세용 ^.^</nav>
 
 	<footer>
-		<p>&copy; 2023 D-day Calculator</p>
+		<p>ⓒ 2023 BlackMint All Rights Reserved.</p>
 	</footer>
-	<script>
-		window.onload = function() {
-			displayDate();
-		};
-
-		function displayDate() {
-			let date = new Date();
-			let year = date.getFullYear();
-			let month = date.getMonth() + 1;
-			let day = date.getDate();
-			let hours = date.getHours();
-			let minutes = date.getMinutes();
-			let seconds = date.getSeconds();
-
-			document.getElementById("current-time").innerHTML = "현재시간 : "
-					+ year + "년 " + month + "월 " + day + "일 " + hours + "시 "
-					+ minutes + "분 " + seconds + "초";
-		}
-
-		setInterval(displayDate, 1000);
-
-		function calculate() {
-			const inputDate = new Date(
-					document.getElementById("inputDate").value);
-
-			if (isNaN(inputDate.getTime())) {
-				alert("계산할 날짜를 입력해주세요.");
-				return false;
-			}
-
-			const now = new Date();
-			const diff = inputDate.valueOf() - now.valueOf();
-			let days = Math.floor(diff / (1000 * 60 * 60 * 24));
-			let hours = Math.floor((diff % (1000 * 60 * 60 * 24))
-					/ (1000 * 60 * 60));
-			let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-			let seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-			let message = "";
-
-			if (days < -1) {
-				message = `D-Day 로 부터 ${-days - 1}일 ${-hours}시간 ${-minutes}분 ${-seconds}초 지났습니다.`;
-			} else if (days > -1) {
-				message = `D-Day 로 부터 ${days}일 ${hours}시간 ${minutes}분 ${seconds}초 남았습니다.`;
-			} else {
-				message = "D-Day 입니다.!!";
-			}
-
-			if (inputDate.getFullYear() === 2022 && inputDate.getMonth()+1 === 10 && inputDate.getDate() === 14) {
-				message += "♡";
-			} 
-
-			document.getElementById("result").innerHTML = message;
-		}
-
-		function toggleMenu() {
-			var menu = document.getElementById("menu-list");
-			if (menu.style.display === "block") {
-				menu.style.display = "none";
-			} else {
-				menu.style.display = "block";
-			}
-		}
-	</script>
 </body>
 </html>

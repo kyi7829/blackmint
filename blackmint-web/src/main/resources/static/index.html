@@ -2,16 +2,29 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>BlackMint</title>
+<link rel="stylesheet" href="../css/common.css">
+<script type="text/javascript" src="javaScript/common.js"></script>
 </head>
-<body>
-	<button id="btn-dDay-v1">D-DAY 계산기</button>
-</body>
+<header>
+	<h1>
+		<a href="https://www.blackmint.co.kr/" id="home">BlackMint</a>
+	</h1>
+	<button class="fa-solid fa-bars" id="menu-btn" onclick="toggleMenu()"></button>
+	<nav id="menu-list">
+		<ul>
+			<li><a href="html/day.html">D-Day 계산기</a></li>
+			<li><a href="#">메뉴2</a></li>
+			<li><a href="#">메뉴3</a></li>
+		</ul>
+	</nav>
+</header>
+<nav id="left-bar"></nav>
 
-<script>
-  const button = document.getElementById('btn-dDay-v1');
-  button.addEventListener('click', function() {
-    window.location.href = 'html/day.html';
-  });
-</script>
+<section></section>
+
+<nav id="right-bar"></nav>
+<footer>
+	<p>ⓒ 2023 BlackMint All Rights Reserved.</p>
+</footer>
 </html>
