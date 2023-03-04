@@ -64,7 +64,7 @@ footer {
 }
 
 #menu-btn {
-	margin-right: 20px;
+	margin-left: 20px;
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -110,13 +110,14 @@ footer {
 }
 
 #menu-list a:hover {
-  background-color: #f5f5f5;
+	background-color: #f5f5f5;
 }
 
 #home {
-	display: block;
+	display: inline-block;
 	text-decoration: none;
 	color: white;
+	text-decoration: none;
 }
 
 #result {
